@@ -1,0 +1,31 @@
+services: 
+    g_service.notification:
+        class:  Pois\NotificationBundle\Service\NotificationService
+        arguments:
+            container:     @service_container
+            entityManager: @doctrine.orm.entity_manager
+            paginator:     @knp_paginator
+            entityClass:   \Pois\NotificationBundle\Entity\Notification
+
+    g_service.notification.type:
+        class:  Pois\ServiceBundle\Service\NotificationTypeService
+        arguments:
+            container:     @service_container
+            entityManager: @doctrine.orm.entity_manager
+            paginator:     @knp_paginator
+            entityClass:   \Pois\NotificationBundle\Entity\NotificationType
+
+    g_service.subscription:
+        class: Pois\ServiceBundle\Service\NotificationSubscriptionService
+        arguments:
+            container:     @service_container
+            entityManager: @doctrine.orm.entity_manager
+            paginator:     @knp_paginator
+            entityClass:   \Pois\NotificationBundle\Entity\NotificationSubscription
+
+    g_service.alert:
+        class: Pois\NotificationBundle\Service\AlertService
+        arguments:
+            container: @service_container
+            services:  ['magazyn']
+

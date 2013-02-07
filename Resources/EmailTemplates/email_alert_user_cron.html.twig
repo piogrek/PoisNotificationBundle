@@ -1,0 +1,16 @@
+{% spaceless %}
+
+<h2>Powiadomienia z dnia {{ date | date('Y-m-d H:i')}}</h2>
+
+<table border="0" >
+
+{% for alarm in userAlarms %}
+	<tr>
+		<td>{{ alarm.description }}</td>
+		<td>{{ alarm.reason }}</td>
+	</tr>
+{% endfor %}
+
+</table>
+
+{% endspaceless %}

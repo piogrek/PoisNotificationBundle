@@ -1,0 +1,21 @@
+<h2>Nowe powiadomienie</h2>
+<form class="notification-form" action="{{ path('notification_create') }}" method="post" >
+    <input type='hidden' name="{{id_name}}" value="{{id}}" />
+    <select name="notification_type_id" class="notification-form--ntype">
+	    {% for type in notification_types %}
+	    <option value="{{type.id}}">{{type.name}}</option>
+	    {% endfor %}
+	</select>
+
+	<div class='notification-form--options'>
+		<div data-id='1' >
+			<label>Minimalny stan</label>
+			<input type="text" name="stan_minimalny" > 
+		</div>
+		<div data-id='2' class="hidden" >
+			<label>Ilość dni do końca ważności</label>
+			<input type="text" name="expiry_in_days" > 
+		</div>
+	</div>
+</form>
+
