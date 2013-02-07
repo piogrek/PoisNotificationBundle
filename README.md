@@ -1,0 +1,2 @@
+pois-notification-bundle
+========================
