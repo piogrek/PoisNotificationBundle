@@ -1,5 +1,12 @@
-<h2>Nowe powiadomienie</h2>
-<form class="notification-form" action="{{ path('notification_create') }}" method="post" >
+{% spaceless %}
+<form 
+	class                = "notification-form" 
+	data-buttons         = "cancel,close"
+	data-close-btn-title = "{{ 'Zapisz'|trans({}, 'PoisNotificationBundle') }}"
+	data-reload-sel      = ".section-notifications"  
+    data-title = "{{ 'Nowe powiadomienie'|trans({}, 'PoisNotificationBundle') }}"
+	action = "{{ path('notification_create') }}" 
+	method = "post" >
     <input type='hidden' name="{{id_name}}" value="{{id}}" />
     <select name="notification_type_id" class="notification-form--ntype">
 	    {% for type in notification_types %}
@@ -9,13 +16,14 @@
 
 	<div class='notification-form--options'>
 		<div data-id='1' >
-			<label>Minimalny stan</label>
+			<label>{{ 'Minimalny stan'|trans({}, 'PoisNotificationBundle') }}</label>
 			<input type="text" name="stan_minimalny" > 
 		</div>
 		<div data-id='2' class="hidden" >
-			<label>Ilość dni do końca ważności</label>
+			<label></label>
 			<input type="text" name="expiry_in_days" > 
 		</div>
 	</div>
 </form>
 
+{% endspaceless %}

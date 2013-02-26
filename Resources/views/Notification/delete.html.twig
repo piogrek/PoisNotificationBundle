@@ -1,5 +1,13 @@
-<p>{{ 'Zamierzasz usunąć powiadomienie '|trans({}, 'GrafixWebBundle') }} '{{ entity.notificationType.name }}' </p>
-<strong>{{ 'header.are_you_sure'|trans({}, 'GrafixCrmBundle') }}</strong>
-<form action="{{ path('notification_delete', { 'id': entity.id }) }}" method="post">
+{% spaceless %}
+<form 
+	action               = "{{ path('notification_delete', { 'id': entity.id }) }}" 
+	data-buttons         = "cancel,close"
+	data-close-btn-title = "{{ 'Usuń'|trans({}, 'PoisNotificationBundle') }}"
+	data-reload-sel      = ".section-notifications"  
+	data-titl]e          = "{{ 'Usuwanie powiadomienia'|trans({}, 'PoisNotificationBundle') }}"
+	method               = "post">
+	<p>{{ 'Zamierzasz usunąć powiadomienie '|trans({}, 'GrafixWebBundle') }} '{{ entity.notificationType.name }}' </p>
+	<strong>{{ 'header.are_you_sure'|trans({}, 'GrafixCrmBundle') }}</strong>
     {{ form_widget(delete_form) }}
 </form>
+{% endspaceless %}
