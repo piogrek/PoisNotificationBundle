@@ -62,10 +62,14 @@ class NotificationController extends Controller
             $this->get('g_service.magazyn')->addNotification($id, $userId, $notificationType, $params);
         } elseif ( $id = $request->get('artykul_id') ) {
             $this->get('g_service.magazyn.artykul')->addNotification($id, $userId, $notificationType, $params);
-        } elseif ( $id = $request->get('zlecenie_id') ) {
-            $this->get('g_service.magazyn.zlecenie')->addNotification($id, $userId, $notificationType, $params);
+        } elseif ( $id = $request->get('imlorder_id') ) {
+            $this->get('g_service.imlorder')->addNotification($id, $userId, $notificationType, $params);
+        } elseif ( $id = $request->get('calculation_id') ) {
+            $this->get('g_service.calculation')->addNotification($id, $userId, $notificationType, $params);
+        } elseif ( $id = $request->get('user_id') ) {
+            $this->get('g_service.user')->addNotification($id, $userId, $notificationType, $params);
         } else {
-            throw $this->createNotFoundException('Nie znaleziono obiektu dla powiadomienia');
+            throw $this->createNotFoundException("Nie znaleziono obiektu dla zalacznika ({$id_name} = {$id})");
         }
 
         //return json
